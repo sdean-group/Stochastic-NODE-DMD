@@ -17,7 +17,7 @@ by [Yujin Kim](https://yujin1007.github.io/) and [Sarah Dean &dagger;](https://s
 
 Together, these components preserve the spectral interpretability of DMD while extending its applicability to sparse, noisy, and strongly nonlinear systems.
 <p align="center">
-  <img width="1000" src="assets/reconstruction3">
+  <img width="1000" src="assets/reconstruction3.png">
 </p>
 
 ## 🛠 Environment Setup
