@@ -141,7 +141,8 @@ def load_synth(device: torch.device, T, norm_T, resolution,sample_ratio, sigma, 
     
     def to_torch_split(lst: List[np.ndarray]):
         yr = [torch.from_numpy(np.real(y)).float().to(device) for y in lst]
-        yi = [torch.from_numpy(np.imag(y)).float().to(device) for y in lst]
+        # yi = [torch.from_numpy(np.imag(y)).float().to(device) for y in lst]
+        yi = [torch.from_numpy(np.imag(y).copy()).float().to(device) for y in lst]
         return [torch.stack([r, i], dim=-1) for r, i in zip(yr, yi)]
 
     coords_torch = [torch.from_numpy(c).float().to(device) for c in coords_list]

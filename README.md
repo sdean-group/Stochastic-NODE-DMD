@@ -1,6 +1,7 @@
 # Sparse-to-Field Reconstruction via Stochastic Neural Dynamic Mode Decomposition
 
 Official implementation of Stochastic NODE--DMD-- Probabilistic modeling of DMD supporting sparse observation and uncertainty quantification. 
+
 by [Yujin Kim](https://yujin1007.github.io/) and [Sarah Dean &dagger;](https://sdean-group.github.io/)
 
 **Stochastic NODE–DMD** is a probabilistic and interpretable framework for system identification.  
@@ -87,7 +88,7 @@ python eval.py --config_dir <SAVE_DIR> --dataset <TASK>
 ```
 
 Replace `<SAVE_DIR>` with the directory containing your saved model.
-
+After evaluation, image files (including gif) and performance summary note will be saved in `<SAVE_DIR>/autoreg_reconstruction' and '<SAVE_DIR>/teacher_forcing_reconstruction'.
 
 
 ## 📜 Citation

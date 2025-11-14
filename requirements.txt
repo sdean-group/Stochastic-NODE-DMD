@@ -1,0 +1,8 @@
+imageio==2.37.0
+matplotlib==3.10.5
+netCDF4==1.7.2
+scipy==1.15.3
+torch==2.8.0
+tqdm==4.67.1
+wheel==0.45.1
+xarray==2025.6.1
