@@ -1,0 +1,26 @@
+device: cuda
+r: 4
+hidden_dim: 64
+num_epochs: 3000
+batch_size: 1
+lr: 0.0005
+l1_weight: 0
+mode_sparsity_weight: 0
+kl_phi_weight: 0.001
+cons_weight: 0.15
+recon_weight: 3.0
+save_dir: results/synthetic/run1
+print_every: 500
+ode_steps: 5
+process_noise: 1e-05
+cov_eps: 1e-06
+seed: 42
+data_len: 50
+eval_data_len: 100
+dt: 0.1
+resolution: (32, 32)
+train_mode: evolve
+normalize_t: False
+mode_frequency: None
+phi_frequency: None
+sample_ratio: 0.1
