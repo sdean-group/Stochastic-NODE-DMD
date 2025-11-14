@@ -88,7 +88,7 @@ python eval.py --config_dir <SAVE_DIR> --dataset <TASK>
 ```
 
 Replace `<SAVE_DIR>` with the directory containing your saved model.
-After evaluation, image files (including gif) and performance summary note will be saved in `<SAVE_DIR>/autoreg_reconstruction' and '<SAVE_DIR>/teacher_forcing_reconstruction'.
+After evaluation, image files (including gif) and performance summary note will be saved in `<SAVE_DIR>/autoreg_reconstruction` and `<SAVE_DIR>/teacher_forcing_reconstruction`.
 
 
 ## 📜 Citation
