@@ -43,10 +43,3 @@ def consistency_loss(obs_mu_phi, obs_logvar_phi, pred_mu_phi, pred_logvar_phi, w
     
     return weight * (mse + kl_scale * kl)
 
-def loss_fn(u_pred, y_next, mu, logvar, lambda_param, l1_weight: float):
-    # u_pred, mu, logvar, lambda_param = model(coords, y_prev, t_prev, t_next)
-    recon_loss = F.mse_loss(u_pred, y_next)  # Predict next step
-    kl_loss = -0.5 * torch.sum(1 + logvar - mu.pow(2) - logvar.exp())
-    l1_loss = l1_weight * torch.mean(torch.abs(lambda_param))
-    return recon_loss + 0.001 * kl_loss + l1_loss
-

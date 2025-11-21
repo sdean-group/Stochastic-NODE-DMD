@@ -3,7 +3,6 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from utils.utils import complex_block_matrix, reparameterize
-from utils.ode import ode_euler_uncertainty_batch  
 from utils.ode import ode_euler_uncertainty
 import math
 class PositionalEncoding(nn.Module):
