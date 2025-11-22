@@ -178,7 +178,7 @@
     
         <!-- Video 1 -->
         <video width="1200" controls autoplay loop muted style="margin-bottom: 20px;">
-          <source src="./static/images/recon_synthetic.mp4" type="video/mp4">
+          <source src="./static/images/recon_synth.mp4" type="video/mp4">
         </video>
     
         <!-- Video 2 -->
@@ -199,24 +199,44 @@
         <br><br>
     
         <p style="text-align: left;">
-          We conduct a function-wise ablation study as follows: <br><br>
-    
-          1) <b>Recovery of true dynamics</b> using a synthetic benchmark where 
-          ground-truth modes and eigenvalues are known, allowing direct comparison 
-          with the learned structure.<br>
-    
-          2) <b>Stochastic dynamics modeling</b> by training on multiple realizations 
-          of the same system and verifying that the model captures ensemble variability 
-          rather than collapsing to an averaged trajectory.<br>
-    
-          3) <b>Resolution robustness</b> by evaluating reconstruction quality across 
-          different spatial grid resolutions, showing that the model generalizes beyond 
-          the training discretization.
+          We conduct a function-wise ablation study as follows:
         </p>
-    
+        
         <br>
-    
-        <img src="./static/images/combined_figs.jpeg" width="1000">
+        
+        <!-- 1) Recovery of true dynamics -->
+        <div style="text-align: left; margin-bottom: 30px;">
+          <p>
+            1) <b>Recovery of true dynamics</b> using a synthetic benchmark where 
+            ground-truth modes and eigenvalues are known, allowing direct comparison 
+            with the learned structure.
+          </p>
+        
+          <img src="./static/images/mode_analysis.png" width="900" style="margin-top: 10px;">
+        </div>
+        
+        <!-- 2) Stochastic dynamics modeling -->
+        <div style="text-align: left; margin-bottom: 30px;">
+          <p>
+            2) <b>Stochastic dynamics modeling</b> by training on multiple realizations 
+            of the same system and verifying that the model captures ensemble variability 
+            rather than collapsing to an averaged trajectory.
+          </p>
+        
+          <img src="./static/images/realizations.png" width="900" style="margin-top: 10px;">
+        </div>
+        
+        <!-- 3) Resolution robustness -->
+        <div style="text-align: left; margin-bottom: 30px;">
+          <p>
+            3) <b>Resolution robustness</b> by evaluating reconstruction quality across 
+            different spatial grid resolutions, showing that the model generalizes beyond 
+            the training discretization.
+          </p>
+        
+          <img src="./static/images/resolution.png" width="900" style="margin-top: 10px;">
+        </div>
+
       </div>
     </div>
     
