@@ -167,33 +167,58 @@
     <div class="columns is-centered has-text-centered">
       <div class="column">
         <h2 class="title is-3">Results</h2>
+    
         <p style="text-align: left;">
-          Our experiments demosntrate that Stochastic NODE-DMD is able to reconstruct the spatiotemporal dynamics of the system from sparse observations compared to the baseline method. 
-      </p>
-      <br>
-        <img src="./static/images/recon_synthetic.mp4" width="1200">
-        <!-- <img src="./static/images/recon_gray_scott.mp4" width="1200">
-        <img src="./static/images/recon_vorticity.mp4" width="1200">
-        <img src="./static/images/recon_cylinder.mp4" width="1200"> -->
-        <br><br>
-          <p style="text-align: left;">
-            We conduct a function wise ablation study listed as follows: <br><br>
-
-            1) <b>Recovery of true dynamics</b> using a synthetic benchmark where ground-truth modes 
-            and eigenvalues are known, enabling a direct comparison between learned and exact 
-            spatiotemporal structure. <br>
-
-            2) <b>Stochastic dynamics modeling</b> by training on multiple realizations of the same system 
-            and verifying that the model captures ensemble variability rather than collapsing to a single 
-            averaged trajectory. <br>
-
-            3) <b>Resolution robustness</b> by evaluating reconstruction quality across different spatial 
-            grid resolutions, demonstrating that the model generalizes beyond the training discretization.
-          </p>
+          Our experiments demonstrate that Stochastic NODE-DMD is able to reconstruct 
+          the spatiotemporal dynamics of the system from sparse observations compared 
+          to the baseline method.
+        </p>
+    
         <br>
+    
+        <!-- Video 1 -->
+        <video width="1200" controls autoplay loop muted style="margin-bottom: 20px;">
+          <source src="./static/images/recon_synthetic.mp4" type="video/mp4">
+        </video>
+    
+        <!-- Video 2 -->
+        <video width="1200" controls autoplay loop muted style="margin-bottom: 20px;">
+          <source src="./static/images/recon_gray_scott.mp4" type="video/mp4">
+        </video>
+    
+        <!-- Video 3 -->
+        <video width="1200" controls autoplay loop muted style="margin-bottom: 20px;">
+          <source src="./static/images/recon_vorticity.mp4" type="video/mp4">
+        </video>
+    
+        <!-- Video 4 -->
+        <video width="1200" controls autoplay loop muted style="margin-bottom: 20px;">
+          <source src="./static/images/recon_cylinder.mp4" type="video/mp4">
+        </video>
+    
+        <br><br>
+    
+        <p style="text-align: left;">
+          We conduct a function-wise ablation study as follows: <br><br>
+    
+          1) <b>Recovery of true dynamics</b> using a synthetic benchmark where 
+          ground-truth modes and eigenvalues are known, allowing direct comparison 
+          with the learned structure.<br>
+    
+          2) <b>Stochastic dynamics modeling</b> by training on multiple realizations 
+          of the same system and verifying that the model captures ensemble variability 
+          rather than collapsing to an averaged trajectory.<br>
+    
+          3) <b>Resolution robustness</b> by evaluating reconstruction quality across 
+          different spatial grid resolutions, showing that the model generalizes beyond 
+          the training discretization.
+        </p>
+    
+        <br>
+    
         <img src="./static/images/combined_figs.jpeg" width="1000">
       </div>
-    </div> 
+    </div>
     
 </section>
 
