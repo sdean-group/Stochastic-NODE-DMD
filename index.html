@@ -105,7 +105,7 @@
       <div class="column">
         <h1 class="title is-4">\(\textbf{Stochastic NODE-DMD} \) is a probabilistic spectral analysis of nonlinear dynamics from sparse observations.</h1>
         <br>
-        <img src="./static/images/howitworks.gif" width="1500">
+        <img src="./static/images/first_figure.png" width="1500">
         </div>
     </div>
     <!-- Dataset -->
@@ -160,7 +160,7 @@
           grid-free forecasting of complex systems.
         </p>
         <br>
-        <img src="./static/images/during_reconstruction.mov" width="1500">
+        <img src="./static/images/during_reconstruction.gif" width="1500">
       </div>
     </div>
 
@@ -171,15 +171,26 @@
           Our experiments demosntrate that Stochastic NODE-DMD is able to reconstruct the spatiotemporal dynamics of the system from sparse observations compared to the baseline method. 
       </p>
       <br>
-        <img src="./static/images/Table1.png" width="600">
-        <br> <br>
-        <p style="text-align: left;">
-          We conduct a component wise ablation study where we: <br>
-          1) <b> Compared learned dynamics</b> to ground truth dynamics with synthetic dataset. <br>
-          2) <b> Verify stochastic dynamics</b> learned from multiple realizations of the system. <br>
-          3) <b> Assess resolution robustness</b> to varying-resolution grids.
-      </p>
-      <br>
+        <img src="./static/images/recon_synthetic.mp4" width="1200">
+        <img src="./static/images/recon_gray_scott.mp4" width="1200">
+        <img src="./static/images/recon_vorticity.mp4" width="1200">
+        <img src="./static/images/recon_cylinder.mp4" width="1200">
+        <br><br>
+          <p style="text-align: left;">
+            We conduct a function wise ablation study listed as follows: <br><br>
+
+            1) <b>Recovery of true dynamics</b> using a synthetic benchmark where ground-truth modes 
+            and eigenvalues are known, enabling a direct comparison between learned and exact 
+            spatiotemporal structure. <br>
+
+            2) <b>Stochastic dynamics modeling</b> by training on multiple realizations of the same system 
+            and verifying that the model captures ensemble variability rather than collapsing to a single 
+            averaged trajectory. <br>
+
+            3) <b>Resolution robustness</b> by evaluating reconstruction quality across different spatial 
+            grid resolutions, demonstrating that the model generalizes beyond the training discretization.
+          </p>
+        <br>
         <img src="./static/images/combined_figs.jpeg" width="1000">
       </div>
     </div> 
