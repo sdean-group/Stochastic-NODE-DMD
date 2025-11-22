@@ -113,7 +113,8 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
           <p style="text-align: left;">
-            Many consequential real-world systems, like wind fields and ocean currents, are dynamic and hard to model. Learning their governing dynamics remains a central challenge in scientific machine learning. Dynamic Mode Decomposition (DMD) provides a simple, data-driven approximation, but practical use is limited by sparse/noisy observations from continuous fields, reliance on linear approximations, and the lack of principled uncertainty quantification. 
+            Many consequential real-world systems, like wind fields and ocean currents, are dynamic and hard to model. Learning their governing dynamics remains a central challenge in scientific machine learning. 
+            Dynamic Mode Decomposition (DMD) provides a simple, data-driven approximation, but practical use is limited by sparse/noisy observations from continuous fields, reliance on linear approximations, and the lack of principled uncertainty quantification. 
             To address these issues, we introduce Stochastic NODE--DMD, a probabilistic extension of DMD that models continuous-time, nonlinear dynamics while remaining interpretable. 
             Our approach enables continuous spatiotemporal reconstruction at arbitrary coordinates and quantifies predictive uncertainty. 
             Across four benchmarks, a synthetic setting and three physics-based flows, it surpasses a baseline in reconstruction accuracy when trained from only 10\% observation density. 
@@ -126,51 +127,57 @@
 
     <div class="columns is-centered has-text-centered">
       <div class="column">
-        <h2 class="title is-3">\( \mu \texttt{Code} \) Overview</h2>
+        <h2 class="title is-3">Training Phase</h2>
         <p style="text-align: left;">
-          \( \mu \texttt{Code} \) follows an <b>expert iteration</b> framework with a local search expert via a learned verifier. 
-          \( \mu \texttt{Code} \) iteratively trains two components - 1) a <i>learned verifier</i> to score responses 
-          and 2) a <i>generator</i> to produce code solutions by imitating the local search. 
-          </li>
-      </p>
-      <br>
-        <img src="./static/images/muCode_train.gif" width="1500">
+          During training, Stochastic NODE–DMD learns a three-part model that reconstructs
+          spatiotemporal dynamics from sparse observations. First, the 
+          <i>Latent Encoder</i> takes subsampled measurements at time step <i>k</i> and produces a 
+          probabilistic latent state together with the continuous-time eigenvalues that govern temporal dynamics of the system.
+          Next, a <i>Stochastic Neural ODE</i> evolves this latent distribution forward to time <i>k+1</i>, capturing both 
+          nonlinear residual dynamics and uncertainty. Finally, the 
+          <i>Mode Extractor</i> learns basis spatial patterns as a continuous implicit representation, enabling 
+          reconstruction on arbitrary spatial coordinates.  
+          <br><br>
+          We train the model using only 10% of fixed datapoints from the ground-truth field. This structure yields an interpretable, uncertainty-aware
+          model that remains stable over long horizons and accurately captures the underlying spatiotemporal patterns.
+        </p>
+        <br>
+        <img src="./static/images/during_training.gif" width="1500">
       </div>
-    </div> 
-
+    </div>
+    
     <div class="columns is-centered has-text-centered">
       <div class="column">
-        <h2 class="title is-3">Multi-turn Best-of-N Search at Test-time</h2>
+        <h2 class="title is-3">Inference Phase</h2>
         <p style="text-align: left;">
-          At inference time, \( \mu \texttt{Code} \) improves solutions over successive turns with <i>multi-turn Best-of-N (BoN)</i>.
-          The generator produces N candidate solutions which are ranked via the verifier (orange representing the chosen solution).
-          The retrieved solution is tested on public tests and the execution feedback is utilized to improve this solution.
-          Our learned verifier gives high scores to solutions with less errors (highlighted in yellow).
-          </li>
-      </p>
-      <br>
-        <img src="./static/images/muCode_inference.gif" width="1500">
-      
+          At inference time, Stochastic NODE–DMD can generate field predictions 
+          at any spatial coordinate, including full-resolution grids unseen during training.
+          By evolving the latent state with the learned stochastic ODE, the model provides both a point estimate
+          and an uncertainty distribution that reflect noise, subsampling, and variability across realizations.
+          <br><br>
+          Reconstruction can be performed either in a single step or autoregressively over long horizons.
+          Importantly, only the initial state is needed to roll out future dynamics, enabling resolution-agnostic,
+          grid-free forecasting of complex systems.
+        </p>
+        <br>
+        <img src="./static/images/during_reconstruction.mov" width="1500">
       </div>
-    </div> 
+    </div>
 
     <div class="columns is-centered has-text-centered">
       <div class="column">
         <h2 class="title is-3">Results</h2>
         <p style="text-align: left;">
-          Our experiments demonstrate that all multi-turn methods perform better with the proposed multi-turn BoN approach. 
-          The Best-of-N (BoN) accuracy is computed with N=5 solutions where the combination of public tests and the learned verifier is used for selection.
-          Our proposed method \( \mu \texttt{Code} \) outperforms competing methods. 
-          </li>
+          Our experiments demosntrate that Stochastic NODE-DMD is able to reconstruct the spatiotemporal dynamics of the system from sparse observations compared to the baseline method. 
       </p>
       <br>
         <img src="./static/images/Table1.png" width="600">
         <br> <br>
         <p style="text-align: left;">
           We conduct a component wise ablation study where we: <br>
-          1) <b> Compare different verifiers</b> (Public Test (PT) and Learned Verifier (LV)) for multi-turn BoN search at test-time</i> (left). <br>
-          2) <b> Evaluate the importance of one-step recoverability and learned verifiers</b> for training the generator (top right). <br>
-          3) <b> Assess scaling behaviors</b> at inference time with number of candidate generations (N) at each turn (bottom right).
+          1) <b> Compared learned dynamics</b> to ground truth dynamics with synthetic dataset. <br>
+          2) <b> Verify stochastic dynamics</b> learned from multiple realizations of the system. <br>
+          3) <b> Assess resolution robustness</b> to varying-resolution grids.
       </p>
       <br>
         <img src="./static/images/combined_figs.jpeg" width="1000">
