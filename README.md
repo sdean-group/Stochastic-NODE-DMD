@@ -4,6 +4,11 @@ Official implementation of Stochastic NODE--DMD-- Probabilistic modeling of DMD 
 
 by [Yujin Kim](https://yujin1007.github.io/) and [Sarah Dean &dagger;](https://sdean-group.github.io/)
 
+[![arXiv](https://img.shields.io/badge/arXiv-2506.05294-df2a2a.svg?style=for-the-badge&logo=arxiv)](https://arxiv.org/pdf/2511.20612)
+[![License](https://img.shields.io/github/license/TRI-ML/prismatic-vlms?style=for-the-badge)](LICENSE)
+[![Website](https://img.shields.io/badge/🔗-WebSite-black?style=for-the-badge)](https://sdean-group.github.io/Stochastic-NODE-DMD/)
+<!-- [![Summary](https://img.shields.io/badge/-Summary-1DA1F2?logo=x&logoColor=white&labelColor=gray&style=for-the-badge)](https://x.com/wzhao_nlp/status/1896962009918525730) -->
+
 **Stochastic NODE–DMD** is a probabilistic and interpretable framework for system identification.  
 
 1. **Generative interpretation of DMD**  
@@ -93,4 +98,16 @@ After evaluation, image files (including gif) and performance summary note will 
 
 ## 📜 Citation
 
-If you use this code or build upon it, please cite appropriately (to be updated after publication).
+If you build on our work or find it useful, please cite it using the following bibtex.
+
+```bibtex
+@misc{kim2025sparsetofieldreconstructionstochasticneural,
+      title={Sparse-to-Field Reconstruction via Stochastic Neural Dynamic Mode Decomposition}, 
+      author={Yujin Kim and Sarah Dean},
+      year={2025},
+      eprint={2511.20612},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2511.20612}, 
+}
+```
