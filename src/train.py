@@ -108,7 +108,7 @@ def run_train(cfg, load_synth, SynthDataset, dataset_type: str):
                     f.write(f"{k}: {v}\n")
 
     initial_lr = cfg.lr
-    final_lr = initial_lr * 0.02
+    final_lr = initial_lr * 0.2
     opt = optim.Adam(model.parameters(), lr=initial_lr)
     decay_rate = (final_lr / initial_lr) ** (1 / cfg.num_epochs)
     scheduler = torch.optim.lr_scheduler.LambdaLR(
