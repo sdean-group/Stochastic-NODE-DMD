@@ -201,22 +201,51 @@ def run_train(cfg, load_synth, SynthDataset, dataset_type: str):
     print(f"Best model saved at {os.path.join(cfg.save_dir, 'best_model.pt')} with loss {best:.6f}")
 
 
+def _apply_cli_overrides(cfg, args):
+    """Override config with non-None CLI arguments."""
+    override_keys = [
+        'save_dir', 'device', 'num_epochs', 'batch_size', 'lr',
+        'seed', 'print_every', 'data_path', 'data_len', 'sample_ratio',
+        'train_mode', 'recon_weight', 'kl_phi_weight', 'cons_weight',
+    ]
+    for key in override_keys:
+        val = getattr(args, key, None)
+        if val is not None and hasattr(cfg, key):
+            setattr(cfg, key, val)
+
+
 def main():
     parser = argparse.ArgumentParser(description='Train Stochastic NODE-DMD model')
     parser.add_argument(
-        '--dataset', 
-        type=str, 
+        '--dataset',
+        type=str,
         required=True,
         choices=['vorticity', 'cylinder', 'gray_scott', 'synthetic'],
         help='Dataset type: vorticity, cylinder, gray_scott, or synthetic'
     )
+    # Optional config overrides (default None = use config class default)
+    parser.add_argument('--save_dir', type=str, default=None)
+    parser.add_argument('--device', type=str, default=None)
+    parser.add_argument('--num_epochs', type=int, default=None)
+    parser.add_argument('--batch_size', type=int, default=None)
+    parser.add_argument('--lr', type=float, default=None)
+    parser.add_argument('--seed', type=int, default=None)
+    parser.add_argument('--print_every', type=int, default=None)
+    parser.add_argument('--data_path', type=str, default=None)
+    parser.add_argument('--data_len', type=int, default=None)
+    parser.add_argument('--sample_ratio', type=float, default=None)
+    parser.add_argument('--train_mode', type=str, choices=['teacher_forcing', 'autoreg', 'evolve'], default=None)
+    parser.add_argument('--recon_weight', type=float, default=None)
+    parser.add_argument('--kl_phi_weight', type=float, default=None)
+    parser.add_argument('--cons_weight', type=float, default=None)
     args = parser.parse_args()
-    
+
     # Get appropriate config and dataset functions
     Config, load_synth, SynthDataset = get_config_and_dataset(args.dataset)
-    
-    # Create config instance and run training
+
+    # Create config instance, apply CLI overrides, then run training
     cfg = Config()
+    _apply_cli_overrides(cfg, args)
     run_train(cfg, load_synth, SynthDataset, args.dataset)
 
 
